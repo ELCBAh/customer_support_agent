@@ -11,3 +11,10 @@ This API uses AI agents to classify incoming customer support tickets and routes
 - Suggested support relply
 - Human escalation rules
 - Multi-model-ready architecture (scalable)
+
+## Dependencies
+
+- `FastAPI`
+- `Pydantic`
+- `python-dotenv`
+- `uvicorn`
