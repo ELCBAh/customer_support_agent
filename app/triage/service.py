@@ -1,6 +1,6 @@
 """connecting the workflow"""
 
-from app.schemas import CustomerSupportTicket, TriageClassification, TriageResponse
+from app.schemas import CustomerSupportTicket, TriageResponse
 from app.triage.classifier import classify_with_rules
 from app.triage.escalation import decide_escalation, is_sla_expired
 
@@ -12,13 +12,8 @@ def process_support_ticket(ticket: CustomerSupportTicket) -> TriageResponse:
     
     return TriageResponse(
         ticket_id="TCK-0001",
-        urgency=classification.urgency,
-        sentiment=classification.sentiment,
-        category=classification.category,
-        sensitive=classification.sensitive,
-        summary=classification.summary,
-        suggested_response=classification.suggested_respones,
-        confidence=classification.confidence,
+        triage=classification,
         escalate=escalate,
         escalation_reason=reason,
+        confidence=classification.confidence
     )
