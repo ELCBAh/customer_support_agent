@@ -27,6 +27,6 @@ def classify_with_rules(ticket: CustomerSupportTicket) -> TriageClassification:
         category=category,
         sensitive=sensitive,
         summary=ticket.message[:120],
-        suggested_respones="Thank you for reaching out. We are reviewing your case and will respond as soon as possible",
-        confidence=0.6,
+        suggested_response="Thank you for reaching out. We are reviewing your case and will respond as soon as possible",
+        confidence=0.6
     )

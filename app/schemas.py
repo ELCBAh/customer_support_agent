@@ -18,13 +18,11 @@ class TriageClassification(BaseModel):
         "billing",
         "technical",
         "general_inquiry",
-        "feedback",
-        "sales",
         "other"
     ]
     sensitive: bool
     summary: str
-    suggested_respones: str
+    suggested_response: str
     confidence: float = Field(ge=0, le=1)
 
 class TriageResponse(BaseModel):
