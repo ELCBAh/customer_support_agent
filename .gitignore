@@ -1,9 +1,9 @@
 .venv/
 .test-deps/
-.env
 app/__pycache__/
 app/triage/__pycache__/
 tests/__pycache__/
 __pycache__/
 TODO.md
 ./agents/
+./.pytest_cache/
