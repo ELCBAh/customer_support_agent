@@ -8,7 +8,7 @@ This API uses AI agents to classify incoming customer support tickets and routes
 - Sentiment detection
 - Ticket creation
 - Problem summarization
-- Suggested support relply
+- Suggested support reply
 - Human escalation rules
 - Multi-model-ready architecture (scalable)
 
@@ -50,4 +50,14 @@ uvicorn app.main:app --reload
 
 ```bash
 curl http://localhost:8000/docs
+```
+
+## Automated tests
+
+The test suite covers the API contract, input validation, classification rules,
+human-escalation priority, SLA boundaries, sensitive content, and unique ticket
+IDs.
+
+```bash
+python -m pytest -q
 ```

@@ -1,4 +1,6 @@
-"""connecting the workflow"""
+"""Connect classification and escalation into the ticket workflow."""
+
+from uuid import uuid4
 
 from app.schemas import CustomerSupportTicket, TriageResponse
 from app.triage.classifier import classify_with_rules
@@ -11,9 +13,8 @@ def process_support_ticket(ticket: CustomerSupportTicket) -> TriageResponse:
     escalate, reason = decide_escalation(classification, sla_expired)
     
     return TriageResponse(
-        ticket_id="TCK-0001",
+        ticket_id=f"TCK-{uuid4().hex[:8].upper()}",
         triage=classification,
         escalate=escalate,
         escalation_reason=reason,
-        confidence=classification.confidence
     )

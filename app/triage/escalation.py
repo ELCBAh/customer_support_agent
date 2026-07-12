@@ -2,10 +2,15 @@
 from datetime import datetime, timezone
 from app.schemas import TriageClassification
 
-def is_sla_expired(sla_deadline) -> bool:
+def is_sla_expired(sla_deadline: datetime | None, now: datetime | None = None) -> bool:
+    """Check a deadline; naive timestamps are interpreted as UTC."""
     if sla_deadline is None:
         return False
-    now = datetime.now(timezone.utc)
+    if sla_deadline.tzinfo is None:
+        sla_deadline = sla_deadline.replace(tzinfo=timezone.utc)
+    now = now or datetime.now(timezone.utc)
+    if now.tzinfo is None:
+        now = now.replace(tzinfo=timezone.utc)
     return now > sla_deadline
 
 def decide_escalation(
