@@ -13,20 +13,8 @@ def is_sla_expired(sla_deadline: datetime | None, now: datetime | None = None) -
         now = now.replace(tzinfo=timezone.utc)
     return now > sla_deadline
 
-def decide_escalation(
-    classification: TriageClassification,
-    sla_expired: bool
-) -> tuple[bool, str | None]:
-    """
-    Determine if a ticket requires human escalation based on rules.
-
-    Args:
-        classification: TriageClassification instance
-        sla_expired: Whether the SLA has expired
-
-    Returns:
-        tuple of (escalate: bool, reason: str | None)
-    """
+def decide_escalation(classification: TriageClassification, sla_expired: bool) -> tuple[bool, str | None]:
+    """Determine if a ticket requires human escalation based on rules."""
     if classification.sentiment == "angry":
         return True, "Angry customer"
     if classification.urgency == "critical":
